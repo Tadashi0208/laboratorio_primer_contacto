@@ -1,0 +1,36 @@
+
+# ==========================================
+# Laboratorio L1 - Primer contacto
+# ==========================================
+
+# Obsidian - configuración local
+.obsidian/
+.trash/
+
+# Python - archivos temporales
+__pycache__/
+*.py[cod]
+
+# Python - entornos virtuales
+.venv/
+venv/
+env/
+
+# Jupyter Notebook - puntos de control
+.ipynb_checkpoints/
+
+# Editores de código
+.vscode/
+.idea/
+
+# Archivos temporales del sistema
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.tmp
+
+# Variables de entorno y credenciales
+.env
+.env.*
+!.env.example

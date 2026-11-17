@@ -1,36 +1,38 @@
 
-# ==========================================
-# Laboratorio L1 - Primer contacto
-# ==========================================
+# Laboratorio L1 — Primer contacto
+# Mantener Markdown, imagenes y cuadernos.
 
-# Obsidian - configuración local
+# Obsidian
 .obsidian/
 .trash/
 
-# Python - archivos temporales
+# Notas diarias automaticas (YYYY-MM-DD.md)
+[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9].md
+
+# Python
 __pycache__/
 *.py[cod]
-
-# Python - entornos virtuales
 .venv/
 venv/
 env/
 
-# Jupyter Notebook - puntos de control
+# Jupyter
 .ipynb_checkpoints/
 
-# Editores de código
+# Editores
 .vscode/
 .idea/
 
-# Archivos temporales del sistema
+# Archivos temporales
 .DS_Store
 Thumbs.db
 *~
 *.swp
 *.tmp
+*.bak
 
-# Variables de entorno y credenciales
+# Credenciales
 .env
 .env.*
 !.env.example
+

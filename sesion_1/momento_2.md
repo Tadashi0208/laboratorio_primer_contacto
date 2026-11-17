@@ -1,67 +1,10 @@
 # Sesión 1 — Momento 2: Ejecutar
 
-### L1 — Primer contacto · Introducción a las Ciencias de la Computación
+**Laboratorio L1 — Primer contacto · Cuaderno:** `**L1_sesion1.ipynb**`
 
----
+## Actividad 1. Traer y conocer el dato
 
-## 1. Información de la actividad
-
-|Campo|Descripción|
-|---|---|
-|Laboratorio|L1 — Primer contacto|
-|Sesión|1 — Recibir|
-|Momento|2 — Ejecutar|
-|Cuaderno de trabajo|`L1_sesion1.ipynb`|
-|Entorno de ejecución|Google Colab / Python|
-|Objetivo|Construir y utilizar herramientas computacionales para analizar el mensaje de Arecibo.|
-
-### 1.1. Propósito
-
-En este momento pasamos de las predicciones y propuestas realizadas durante el Momento 1 a la experimentación computacional.
-
-El objetivo es construir y utilizar diferentes funciones en Python que permitan examinar la secuencia binaria, identificar sus propiedades, determinar sus posibles dimensiones rectangulares, visualizar su estructura y comenzar a interpretar la información que contiene.
-
-Cada función debe desarrollarse a partir de su contrato, implementarse en el cuaderno y verificarse mediante pruebas con `assert`, según las indicaciones de la guía.
-
-> [!IMPORTANT]  
-> **Criterio de trabajo**
-> 
-> El código se desarrolla primero en el cuaderno `L1_sesion1.ipynb`. En este documento se conservarán las implementaciones propias, las pruebas, los resultados obtenidos y las observaciones realizadas durante la ejecución.
-> 
-> Las celdas identificadas como **CAJA** ya están implementadas en el cuaderno. No es necesario reproducir su código interno; basta con documentar su utilización y los resultados relevantes.
-
----
-
-## 2. Desarrollo de la ejecución
-
-### 2.1. Actividad 1 — Traer y conocer el dato
-
-#### 2.1.1. Descripción
-
-El primer paso consiste en obtener el mensaje de Arecibo mediante la función `cargar_mensaje()`, proporcionada como una caja en el cuaderno.
-
-También se utiliza `huella(bits)`, que permite obtener información sobre la secuencia, como la cantidad de unos y su huella digital SHA-256.
-
-Antes de aplicar cualquier algoritmo, es necesario examinar los datos y conocer sus características básicas.
-
-#### 2.1.2. Exploración de la secuencia
-
-Se deben determinar las siguientes propiedades:
-
-- Longitud total de la cadena.
-    
-- Caracteres distintos que aparecen.
-    
-- Cantidad de unos.
-    
-- Cantidad de ceros.
-    
-- Primeros 60 caracteres de la secuencia.
-    
-
-#### 2.1.3. Implementación propia
-
-**Código desarrollado en Python:**
+La función proporcionada `cargar_mensaje()` permite obtener la secuencia. Para examinarla utilicé:
 
 ```python
 n_caracteres = len(bits)
@@ -74,212 +17,68 @@ print("distintos:", distintos)
 print("unos/ceros:", n_unos, n_ceros)
 print(bits[:60])
 ```
-#### 2.1.4. Resultados de ejecución
 
-|Propiedad|Resultado obtenido|
+**Resultados de ejecución**
+
+|Propiedad|Resultado|
 |---|---|
 |Número de caracteres|1679|
 |Caracteres distintos|`{'1', '0'}`|
-|Cantidad de unos|397|
-|Cantidad de ceros|1282|
+|Unos|397|
+|Ceros|1282|
 |Primeros 60 caracteres|`000000101010100000000000010100000101000000010010001000100010`|
 
-#### 2.1.5. Análisis
-
-**Preguntas orientadoras:**
-
-- ¿Qué características podemos identificar al observar la secuencia?
-    
-- ¿Qué información podemos obtener directamente de los datos sin aplicar todavía un proceso de decodificación?
-    
-
-**Observaciones:**
-
 > [!TIP]  
-> **Hipótesis sobre la representación gráfica**
-> 
-> Si interpretamos la secuencia como la representación binaria de un dibujo, podemos proponer que los ceros correspondan al fondo y los unos a los detalles de la imagen.
-> 
-> Esta interpretación permitiría explicar por qué hay una cantidad considerablemente mayor de ceros que de unos: el fondo podría ocupar una superficie mayor que los elementos dibujados.
-> 
-> Sin embargo, todavía necesitamos conocer la distribución y organización de los bits para determinar si esta hipótesis tiene sentido.
+> **Hipótesis propia:** si los bits representan un dibujo, los ceros podrían corresponder al fondo y los unos a sus detalles. Falta contrastarlo con una distribución visual.
 
-> [!IMPORTANT]  
-> **Posibles dimensiones de la imagen**
-> 
-> Como:
-> 
-> $$1679=23\times73$$
-> 
-> existen cuatro parejas ordenadas de dimensiones:
-> 
-> $$1\times1679,\quad 23\times73,\quad 73\times23,\quad 1679\times1$$
-> 
-> Si suponemos que el mensaje representa una imagen bidimensional, podemos considerar menos probables las dimensiones lineales:
-> 
-> $$1\times1679 \qquad \text{y} \qquad 1679\times1$$
-> 
-> Por tanto, las dos posibilidades bidimensionales que resulta interesante examinar son:
-> 
-> $$23\times73 \qquad \text{y} \qquad 73\times23$$
-> 
-> Estas dimensiones son posibilidades matemáticas que debemos contrastar con la representación visual.
-
-> [!NOTE]  
-> **Influencia de las dimensiones en la representación**
-> 
-> Aunque las matrices de dimensiones (23\times73) y (73\times23) contienen la misma cantidad de elementos, pueden generar dibujos muy diferentes debido a la distribución de los bits.
-> 
-> Esto muestra que conocer únicamente la cantidad de bits no es suficiente para reconstruir una imagen. También es necesario conocer sus dimensiones y el orden de lectura.
-
-> [!NOTE]  
-> **Influencia del marco cognitivo del receptor**
-> 
-> La selección de una posible representación también depende de la forma en que la especie receptora percibe e interpreta el mundo. Sus capacidades cognitivas, conocimientos, experiencias y convenciones culturales pueden influir en la manera en que reconoce y comprende los patrones presentes en el mensaje.
-> 
-> Por esta razón, una representación que para nosotros resulte reconocible podría no tener el mismo significado para otra especie. La interpretación debe considerar no solamente la estructura de la información, sino también las características del receptor que intenta descifrarla.
-
-> [!NOTE]  
-> **Dificultad de establecer una comunicación**
-> 
-> Una posible estrategia sería transmitir primero información sencilla que permita explicar cómo percibimos e interpretamos nuestro entorno. Para ello, sería necesario establecer convenciones, representar elementos conocidos para nosotros y mostrar las relaciones que existen entre ellos.
-> 
-> Sin embargo, surge una dificultad: desconocemos cómo percibe y procesa la información la especie receptora. Por tanto, no podemos garantizar que nuestras representaciones tengan para ella el mismo significado que tienen para nosotros.
-
-> [!NOTE]  
-> **Construcción progresiva de un lenguaje común**
-> 
-> Dado que desconocemos el sistema matemático y lógico de la especie receptora, considero más conveniente comenzar representando elementos de nuestro mundo. A partir de ellos, podríamos mostrar características, semejanzas, diferencias y relaciones.
-> 
-> Posteriormente, podríamos introducir la manera en que los seres humanos utilizamos esas relaciones para construir conceptos matemáticos y establecer razonamientos lógicos. De esta forma, intentaríamos construir progresivamente una base de comunicación compartida, sin asumir que la especie receptora utiliza nuestras mismas convenciones.
-
-#### 2.1.6. Representación y almacenamiento
-
-El mensaje contiene una secuencia de 1.679 dígitos binarios. Sin embargo, cuando se almacena como una cadena de texto, cada dígito se representa mediante un carácter.
-
-Por tanto, es importante distinguir entre la longitud de la secuencia binaria y el espacio que ocupa su representación textual en un archivo.
-
+**Representación y almacenamiento**
 
 ```python
-
 bits_en_disco = len(bits.encode("ascii")) * 8
-
 print("El mensaje tiene", len(bits), "bits de información y ocupa", bits_en_disco, "bits en el disco.")
-
 ```
-
-**Resultado obtenido al ejecutar el cálculo:**
 
 ```
 El mensaje tiene 1679 bits de información y ocupa 13432 bits en el disco.
-
 ```
 
-**Pregunta de análisis:**
+**¿Qué diferencia existe entre el carácter** `**'1'**` **y el bit** `**1**`**?** El bit representa un valor binario; el carácter `'1'` es un símbolo de texto que, en la codificación ASCII utilizada, ocupa 8 bits al almacenarse. Por ello, el valor binario y su representación textual no son el mismo dato.
 
->¿Cuál es la diferencia entre el carácter `'1'` y el bit `1`?
+## Actividad 2. La llave: `es_primo(n)`
 
-El `bit` 1 representa una unidad lógica que puede tomar el valor de `1` o  `0
-mientras que el carácter `'1'` es un símbolo que ocupa 8 bits.
-
->[!NOTE]
->
->#### **¿Por qué no podemos considerar que ambos son exactamente el mismo dato?** 
->
->Interpretando que ambos tienen el mismo significado perderemos información relevante, por ejemplo el carácter `'00011'`  nos podría determinar una sección de un dibujo en pixeles, al convertirlo en un entero, obtenemos `11` que representa el numero `11` en decimal o el numero `6`en base 5, por lo tanto no podemos interpretarlos como si fueran el mismo dato.
-
----
-
-### 2.2. Actividad 2 — La llave: función `es_primo(n)`
-
-#### 2.2.1. Descripción
-
-En esta actividad se retoma el algoritmo de primalidad trabajado en la clase 5 y se traduce a Python.
-
-El propósito es construir una función que permita determinar si un número entero es primo, devolviendo un valor booleano:
-
-- `True`: el número es primo.
-    
-- `False`: el número no es primo.
-    
-
-Función en PSeInt:
-
-```
-esPrimo <- (n >= 2);d <- 2;
-Mientras d * d <= n y esPrimo Hacer    
-	Si n mod d = 0 Entonces        
-		esPrimo <- Falso;    
-	FinSi    d <- d + 1;
-FinMientras
-```
-
-#### 2.2.2. Implementación propia
-
-**Código desarrollado en Python:**
+**Implementación propia**
 
 ```python
 def es_primo(n):
 	esPrimo=(n>=2)
-	d=2  
-	
+	d=2
+
 	while d*d <=n and esPrimo:
-	
-		if n%d==0:	
+		if n%d==0:
 			esPrimo=False
-	
 		d+=1
 	return esPrimo
 ```
 
-#### 2.2.3. Pruebas y verificación
+**Pruebas registradas**
 
-La función se debe probar con diferentes números para comprobar su comportamiento.
-
-| Número | Resultado esperado | Resultado obtenido |
-| ------ | ------------------ | ------------------ |
-| 91     | No primo           | False              |
-| 97     | Primo              | True               |
-| 1679   | No primo           | False              |
-
-**Resultado de las pruebas con** `**assert**`**:**
+|Entrada|Resultado|
+|---|---|
+|91|`False`|
+|97|`True`|
+|1679|`False`|
 
 ```
-✔ es_primo pasa las pruebas. 
+✔ es_primo pasa las pruebas.
 ¿1679 es primo? False
 ```
 
+## Actividad 3. Las formas posibles: `rectangulos(n)`
 
-> [!TIP]  
-> **Relación con los conocimientos previos**
-> 
-> Esta actividad permite reutilizar el algoritmo de primalidad desarrollado anteriormente y adaptarlo a un lenguaje de programación mediante funciones, condiciones y ciclos.
+La función obtiene las parejas ordenadas `(filas, columnas)` cuyo producto es `n`.
 
----
+**Implementación propia**
 
-### 2.3. Actividad 3 — Las formas posibles: función `rectangulos(n)`
-
-#### 2.3.1. Descripción
-
-En esta actividad se construye una función que permite encontrar todas las parejas de dimensiones enteras positivas cuyo producto sea igual a un número determinado.
-
-La función `rectangulos(n)` debe devolver una lista de parejas ordenadas:
-
-$$  
-(\text{filas},\text{columnas})  
-$$
-
-que satisfagan:
-
-$$  
-\text{filas}\cdot\text{columnas}=n  
-$$
-
-El resultado debe estar ordenado de menor a mayor número de filas.
-
-#### 2.3.2. Implementación propia
-
-**Código desarrollado en Python:**
 ```python
 def rectangulos(n):
 
@@ -293,217 +92,171 @@ def rectangulos(n):
     return parejas
 ```
 
-#### 2.3.4. Pruebas y resultados
+**Pruebas registradas**
 
-La función se prueba inicialmente con números pequeños para verificar que encuentre correctamente las parejas de factores.
-
-Posteriormente, se ejecuta con 1.679 y 1.680 para comparar las configuraciones posibles.
-
-| Número | Resultado obtenido                                                                                                                                                                                                                                                                                                                                                                                 | Número de parejas |
-| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------: |
-| 12     | [(1, 12), (2, 6), (3, 4), (4, 3), (6, 2), (12, 1)]                                                                                                                                                                                                                                                                                                                                                 |         6         |
-| 7      | [(1, 7), (7, 1)]                                                                                                                                                                                                                                                                                                                                                                                   |         2         |
-| 1679   | [(1, 1679), (23, 73), (73, 23), (1679, 1)]                                                                                                                                                                                                                                                                                                                                                         |         4         |
-| 1680   | [(1, 1680),(2, 840),(3, 560),(4, 420),(5, 336),(6, 280),(7, 240),(8, 210), (10, 168),(12, 140),(14, 120),(15, 112),(16, 105),(20, 84),(21, 80),<br>(24, 70),(28, 60),(30, 56),(35, 48),(40, 42),(42, 40),(48, 35),(56, 30),<br>(60, 28),(70, 24),(80, 21),(84, 20),(105, 16),(112, 15),(120, 14),<br>(140, 12),(168, 10),(210, 8),(240, 7),(280, 6),(336, 5),(420, 4),(560, 3),(840, 2),(1680, 1)] |        40         |
-
-
-
-**Resultado de las pruebas con** `**assert**`**:**
+|Entrada|Número de parejas|
+|---|---|
+|12|6|
+|7|2|
+|1679|4|
+|1680|40|
 
 ```
-✔ rectangulos pasa las pruebas. 
-Formas de acomodar 1679: [(1, 1679), (23, 73), (73, 23), (1679, 1)] 
+✔ rectangulos pasa las pruebas.
+Formas de acomodar 1679: [(1, 1679), (23, 73), (73, 23), (1679, 1)]
 Formas de acomodar 1680: 40
 ```
 
-#### 2.3.5. Comparación y análisis
+>**¿Por qué pudo elegirse una longitud que es producto de dos primos?** 
 
-Durante el Momento 1 identificamos que la factorización de 1.679 permite obtener las dimensiones de sus rectángulos.
+La factorización `1679 = 23 × 73` deja pocas distribuciones rectangulares posibles y podría facilitar la búsqueda de la forma original. No es posible asegurar solo con este resultado que esa fuera la intención del diseñador.
 
-Ahora debemos confrontar ese razonamiento con los resultados del programa.
+>**¿Qué cambia si hay 1680 bits?** 
 
-**Preguntas de análisis:**
-   
->¿Por qué quien diseñó el mensaje pudo elegir una cantidad de bits que es producto de dos números primos?
+En las pruebas, 1680 admite 40 parejas de dimensiones, frente a las cuatro de 1679. Por ello, hay más configuraciones que examinar.
 
-Una posible ventaja de elegir una cantidad de bits que sea producto de dos números primos es que se obtiene un número reducido de posibles configuraciones rectangulares. Como observamos, 1.679 tiene únicamente cuatro divisores positivos, lo que limita las dimensiones posibles de la matriz.
+### Optimización opcional realizada
 
-Esto podría facilitar la identificación de la organización original del mensaje, ya que reduce la cantidad de configuraciones que deben considerarse. Sin embargo, no podemos asegurar que esta haya sido la intención del diseñador.
-
->¿Qué diferencia encontramos al comparar 1.679 con 1.680?
-    
-El número `1.679` tiene únicamente cuatro divisores positivos y, por tanto, permite construir cuatro parejas ordenadas de dimensiones rectangulares. En cambio, `1.680` tiene cuarenta divisores positivos y permite construir cuarenta parejas ordenadas.
-
-Esto significa que `1.680` admite una mayor cantidad de configuraciones rectangulares que `1.679`, lo que aumenta las posibilidades de organizar sus elementos en filas y columnas.
-
-#### 2.3.6. Optimización del algoritmo (opcional)
-
-La guía propone una mejora: en lugar de probar todos los números hasta (n), se puede utilizar la cota:
-
-$$  
-d\leq\sqrt{n}  
-$$
-
-La idea es aprovechar que cada divisor pequeño permite obtener su pareja mediante la división entera.
-
-**Implemetación original con contador de vueltas**
+Para reducir las divisiones probadas, desarrollé otra versión que busca divisores mientras `d*d <= n` y obtiene la pareja mediante división entera, evita duplicados y ademas ordena la lista. Esta es la implementación registrada en mis apuntes:
 
 ```python
-def rectangulos(n):
-
-    parejas = []
-	vueltas=0
-	
-    for i in range(1,n+1):
-        for j in range(1,n+1):
-            if i*j == n:
-                parejas.append((i,j))
-                
-			vueltas+=1
-    return parejas
-```
-
-**Implementación de la versión optimizada:**
-
-```python
-def rectangulos_2(n):
+def rectangulos_rapido(n):
 
 	parejas=[]
-	
+
 	d=1
 	vueltas=0
-	
-	while d*d<=n:	
+
+	while d*d<=n:
 		if n % d==0:
-		
 			parejas.append((d,n//d))
-			
+
 			#La condicion evita repetir pareja cuando es un cuadrado perfecto
-			if(d != n//d):			
+			if(d != n//d):
 				parejas.append((n//d,d))
-		
-		vueltas+=1		
+
+		vueltas+=1
 		d+=1
+		
+	#Ordemanos las parejas
+	parejas.sort()
 	
 	print(f"el Algoritmo hizo: {vueltas} vueltas")
 	return parejas
 ```
 
-**Comparación de las dos versiones:**
+```python
+#Comprobando que las dos versiones devuelven las misma parejas
 
-| Número  | Algoritmo          |      Número de iteraciones      |
-| ------- | ------------------ | :-----------------------------: |
-| 1679    | Versión original   |             2819041             |
-| 1679    | Versión optimizada |               40                |
-| 1000000 | Versión original   | 2 min y aun seguia en ejecucion |
-| 1000000 | Versión optimizada |              1000               |
+assert rectangulos(12)==rectangulos_rapido(12)
+
+assert rectangulos(100)==rectangulos_rapido(100)
+```
+
+**Comparación registrada**
+
+|Entrada|Versión original|Versión optimizada|
+|---|---|---|
+|1679|2 819 041 iteraciones|40 iteraciones|
+|1 000 000|Más de 2 minutos sin finalizar|1000 iteraciones|
+
+> [!NOTE]  
+> La fila de 1 000 000 compara una ejecución no finalizada con un conteo de iteraciones; no son mediciones equivalentes.
 
 
 ---
+## Actividad 4. Ver: `filas_de` y `dibujar`
 
-### 2.4. Actividad 4 — Ver: funciones `filas_de()` y `dibujar()`
+### Implementación propia
 
-#### 2.4.1. Descripción
+La función `filas_de(bits, columnas)` organiza una cadena binaria en renglones del tamaño indicado.
 
-Una vez conocidas las posibles dimensiones del mensaje, el siguiente paso consiste en organizar la secuencia binaria en una representación bidimensional.
+```python
+def filas_de(bits, columnas):
+    """CONTRATO
+    Recibe: una cadena de bits y un número de columnas que divide su longitud.
+    Devuelve: la lista de renglones, cada uno de longitud 'columnas'.
+    """
+    if len(bits) % columnas == 0:
+        b = columnas
+        i = 0
+        renglones = []
 
-Para ello, se construyen dos funciones:
+        while b <= len(bits):
+            renglones.append(bits[i:b])
+            i = b
+            b = i + columnas
 
-- `filas_de(bits, columnas)`: devuelve una lista de renglones con la cantidad de columnas especificada.
-    
-- `dibujar(bits, columnas)`: utiliza la función anterior para imprimir la representación visual del mensaje.
-    
-
-En la representación se utiliza:
-
-- `1`: bloque lleno.
-    
-- `0`: espacio vacío.
-    
-
-#### 2.4.2. Contratos de las funciones
-
-**Función:** `filas_de(bits, columnas)`
-
-[Registrar aquí el contrato indicado en el cuaderno.]
-
-**Función:** `dibujar(bits, columnas)`
-
-[Registrar aquí el contrato indicado en el cuaderno.]
-
-#### 2.4.3. Implementación propia
-
-**Código desarrollado en Python:**
-
-```
-# Pegar aquí las implementaciones propias de filas_de()
-# y dibujar().
+        return renglones
+    else:
+        print("El # de columnas debe dividir la longitud de la cadena de bits")
 ```
 
-#### 2.4.4. Pruebas y verificación
+La función `dibujar(bits, columnas)` utiliza `filas_de` para imprimir los renglones, representando los unos mediante `█` y los ceros mediante espacios.
 
-Se realizan pruebas con secuencias pequeñas para verificar que la distribución de los bits corresponda con el número de columnas indicado.
-
-**Resultados de las pruebas con** `**assert**`**:**
-
-```
-Pegar aquí el resultado de la ejecución.
-```
-
-#### 2.4.5. Visualización del mensaje
-
-La guía propone probar dos distribuciones del mensaje:
-
-**Primera representación: 73 columnas**
-
-```
-# Registrar aquí la instrucción utilizada para dibujar el mensaje.
-```
-
-**Resultado visual:**
-
-[Insertar aquí una captura de la salida obtenida.]
-
-**Segunda representación: 23 columnas**
-
-```
-# Registrar aquí la instrucción utilizada para dibujar el mensaje.
+```python
+def dibujar(bits, columnas):
+    """CONTRATO
+    Recibe: una cadena de bits y un número de columnas.
+    Devuelve: nada. Imprime los renglones con '█' para 1 y ' ' para 0.
+    """
+    renglones = filas_de(bits, columnas)
+    for i in renglones:
+        aux = ''
+        for j in i:
+            if j == '1':
+                aux += '█'
+            elif j == '0':
+                aux += ' '
+        print(aux)
 ```
 
-**Resultado visual:**
+### Pruebas y verificación
 
-[Insertar aquí una captura de la salida obtenida.]
+Se ejecutaron las pruebas del cuaderno utilizando la cadena original `bits` de 1679 caracteres.
 
-#### 2.4.6. Visualización mediante imagen
-
-El cuaderno también proporciona la función `dibujar_imagen(bits, columnas)`, que permite representar la secuencia como una imagen con una cuadrícula numerada.
-
-**Instrucción ejecutada:**
-
-```
-# Registrar aquí la instrucción utilizada.
+```python
+assert filas_de("101100", 3) == ["101", "100"]
+assert filas_de("101100", 2) == ["10", "11", "00"]
+assert len(filas_de(bits, 23)) == 73
+print("✔ filas_de pasa las pruebas.")
 ```
 
 **Resultado:**
 
-[Insertar aquí la imagen obtenida.]
+```
+✔ filas_de pasa las pruebas.
+```
 
-#### 2.4.7. Análisis
+### Visualización del mensaje
 
-Después de observar las dos representaciones, debemos determinar cuál permite identificar una estructura reconocible y cuál parece corresponder a ruido.
+Se probaron las dos distribuciones indicadas en la guía:
 
-**Observaciones:**
+```python
+dibujar(bits, 73)
+dibujar(bits, 23)
+```
 
-[Describir las diferencias entre las dos representaciones.]
+|Distribución|Observación|
+|---|---|
+|23 filas × 73 columnas|Los bloques aparecen dispersos y no logré identificar figuras reconocibles.|
+|73 filas × 23 columnas|Se distinguen patrones organizados y algunas figuras conocidas.|
 
-**Relación con el Momento 1:**
+**Visualización mediante la función proporcionada** `**dibujar_imagen**`**:**
 
-[Explicar cómo las dimensiones encontradas anteriormente permiten organizar el mensaje y contrastar las hipótesis iniciales.]
+```python
+dibujar_imagen(bits, 23)
+```
 
-> [!IMPORTANT]  
-> **Deducción**
-> 
-> Una secuencia binaria puede adquirir una estructura visual cuando se establece una distribución determinada de filas y columnas. La elección de las dimensiones es fundamental para interpretar correctamente la información.
+**Imagen obtenida**
+
+![Mensaje de Arecibo: 73 filas y 23 columnas](./imagenes/arecibo_23_columnas.png)
+
+
+> [!NOTE]  
+> **Observación:** La distribución de 23 columnas presenta una estructura visual más reconocible. Identifiqué una figura que podría representar a una persona y otra semejante a la letra M. Sin embargo, todavía no es posible asegurar que estas figuras tengan el significado que les estoy atribuyendo.
+
+La comparación muestra que una misma secuencia binaria puede producir representaciones visuales diferentes dependiendo de cómo se organice en filas y columnas.
 
 ---
 

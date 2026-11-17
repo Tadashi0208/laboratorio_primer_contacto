@@ -1,14 +1,14 @@
-# Sesión 1 — Recibir: el mensaje de Arecibo
+#  Predecir: el mensaje de Arecibo
 
 ## 1. Información de la sesión
 
-|Campo|Descripción|
-|---|---|
-|Laboratorio|L1 — Primer contacto|
-|Sesión|1 — Recibir|
-|Actividad|El mensaje de Arecibo|
-|Tema central|Representación e interpretación de información binaria|
-|Modalidad|Análisis y razonamiento sin computador|
+| Campo        | Descripción                                            |
+| ------------ | ------------------------------------------------------ |
+| Laboratorio  | L1 — Primer contacto                                   |
+| Sesión       | 1 — Recibir                                            |
+| Actividad    | El mensaje de Arecibo                                  |
+| Tema central | Representación e interpretación de información binaria |
+| Modalidad    | Análisis y razonamiento sin computador                 |
 
 ---
 

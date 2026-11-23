@@ -6,12 +6,17 @@
 
 **Especie que diseñé:** Glitx Synkai  
 **Sistema de numeración que elegí:** base 8  
-**Herramienta:** Python en Google Colab  
 **Fuente del diseño original:** `tarea_puente/parte_c.md`
 
 ---
 
 ## 1. Antecedentes: Momento 1 — Predecir
+  
+
+>**P4.** ¿Qué fracción de su mensaje creen que la otra especie va a entender? Un número entre 0 y 1, y qué sección creen que se va a perder primero.  
+
+>**P5.** Si el canal daña 1 de cada 100 bits, ¿cuántos bits dañados esperan en su mensaje? ¿Y si lo mandan tres veces
+
 
 > [!note] P4 — Predicción de comprensión
 > Estimé que la especie receptora comprenderá aproximadamente **0,5 (50 %)** de nuestro mensaje. La interpretación del laberinto, especialmente la distinción entre paredes (`1`) y espacios transitables (`0`), es la parte que considero más vulnerable a una lectura incorrecta.
@@ -47,11 +52,6 @@ Reutilicé las funciones que elaboré en la sesión 1 y en la tarea puente:
 - `es_primo`, `rectangulos`;
 - `filas_de`, `dibujar`, `leer_numero`, `columna`;
 - `a_base_ciclo`, `de_base` (y la versión recursiva desarrollada en la tarea puente).
-
-Corregí un error de sintaxis en la prueba de la variable `MI_BASE`: la base de nuestra especie es `8`, y la prueba verifica su pertenencia al conjunto de bases admitidas. Superé las pruebas de las herramientas anteriores.
-
-> [!tip] Observación de eficiencia
-> Mi implementación de `rectangulos(n)` utiliza dos ciclos anidados de `1` a `n`, por lo cual realiza `n²` comprobaciones. El resultado es válido, aunque su costo crece rápidamente. En el caso de `n = 2491`, se registraron **6 205 081** iteraciones.
 
 ## 3. Bits necesarios por dígito
 
@@ -132,9 +132,6 @@ produce **10 renglones**. El cambio decisivo es:
 $$
 (7)_8 = (111)_2,\qquad (10)_8 = (001\ 000)_2.
 $$
-
-> [!warning] Ambigüedad interpretativa
-> Aunque el conteo es matemáticamente correcto y supera las pruebas del profesor, la transición de `111` a `001000` puede interpretarse como números escritos directamente en binario. El receptor tendría que deducir que cada **tres bits** forman un dígito octal. Durante la tarea puente diseñé bits de control y separadores, pero **decidí no añadir nuevas filas ni columnas para recuperarlos en esta versión**. Estudiaré la representación alternativa después como ejercicio personal de refuerzo.
 
 ---
 
@@ -287,7 +284,7 @@ La guía me pidió responder **al menos dos** preguntas relacionadas con las lim
 
 ### 9.1. Pregunta 1 — Ancho fijo y desbordamiento
 
-> [!question] Enunciado
+
 > Si cada número va en un renglón de `COLUMNAS` bits, ¿cuál es el número más grande que cabe en su base? ¿Qué pasa si quieren decir cuántos habitantes tiene Manizales? A esto se le llama **desbordamiento**.
 
 #### 9.1.1. Cantidad de dígitos completos
@@ -363,7 +360,6 @@ Por tanto, **no cabe en mi renglón**. Además, `renglon()` comprueba mediante `
 
 ### 9.2. Pregunta 2 — Decimales y unidades de medida
 
-> [!question] Enunciado
 > ¿Cómo dicen la altura de Manizales en metros si el otro no sabe qué es un metro, ni dónde va la coma? La guía menciona como pista las placas Pioneer de 1972 y una propiedad física del átomo de hidrógeno.
 
 Identifiqué **dos dificultades distintas**: mi codificación actual solo maneja números enteros y, aunque otra especie comprendiera la cifra, podría desconocer la unidad de medida.
@@ -484,7 +480,6 @@ def con_paridad(bits, ancho):
     return cadena_paridad
 ```
 
-Al principio había utilizado `.append()` sobre una cadena y también había sobrescrito el contenido de `aux` con `=`. Corregí ambos errores para conservar el renglón original y concatenarle el bit extra.
 
 Mi mensaje contiene **53 renglones de 47 bits**, así que tras añadir la paridad tiene:
 
@@ -560,7 +555,7 @@ def votar(bits):
 
 La votación recupera el bit original si **como máximo una de sus tres copias** fue alterada. Si cambian dos o tres copias, la mayoría puede resultar equivocada.
 
-### 10.7. Pruebas del profesor
+### 10.7. Pruebas 
 
 Ejecuté las pruebas `assert` incluidas en el cuaderno para las cinco funciones:
 
@@ -646,13 +641,6 @@ $$
 > [!note] Interpretación correcta de la repetición
 > La cifra de **459** significa que en 459 transmisiones reconstruí exactamente los **2491 bits** originales. En las otras 541 quedó **al menos un bit incorrecto**; no implica que todas sus secciones estén destruidas. Como el canal es aleatorio, estos valores pueden cambiar si repito el experimento.
 
-### 10.9. Costo de protección
-
-| Estrategia | Bits transmitidos | Bits adicionales | Relación con el original |
-|:--|--:|--:|:--|
-| Sin protección | 2491 | 0 | 1 vez |
-| Paridad | 2544 | 53 | Aproximadamente 1,021 veces |
-| Repetición triple | 7473 | 4982 | 3 veces |
 
 ### 10.10. Elección de la protección
 
@@ -699,13 +687,6 @@ El modo `"w"` **crea** el archivo si todavía no existe y **sobrescribe** su con
 ```text
 mensaje.txt listo: 7473 bits. Entréguenlo al monitor.
 ```
-
-El flujo de la transmisión fue:
-
-$$
-2491\text{ bits}\xrightarrow{\text{repetir3}}7473\text{ bits}
-\xrightarrow{\text{ruido }p=0.01}7473\text{ bits}.
-$$
 
 
 ---

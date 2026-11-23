@@ -42,7 +42,7 @@ print("El mensaje tiene", len(bits), "bits de información y ocupa", bits_en_dis
 El mensaje tiene 1679 bits de información y ocupa 13432 bits en el disco.
 ```
 
-**¿Qué diferencia existe entre el carácter ** `**'1'**` y el bit** `**1**`**?** El bit representa un valor binario; el carácter `'1'` es un símbolo de texto que, en la codificación ASCII utilizada, ocupa 8 bits al almacenarse. Por ello, el valor binario y su representación textual no son el mismo dato.
+**¿Qué diferencia existe entre el carácter `'1'` y el bit `1`?**El bit representa un valor binario; el carácter `'1'` es un símbolo de texto que, en la codificación ASCII utilizada, ocupa 8 bits al almacenarse. Por ello, el valor binario y su representación textual no son el mismo dato.
 
 ## Actividad 2. La llave: `es_primo(n)`
 

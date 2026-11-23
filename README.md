@@ -18,8 +18,6 @@ La pregunta central del laboratorio es cómo **representar, transmitir y recuper
 | **Sesión 2 · Responder** | [Construcción y transmisión — versión ampliada](sesion_2/momento_2_act.md) · [Análisis del mensaje recibido](sesion_2/recibiendo_un_mensaje_n.md) | Codificación, protección frente al ruido, experimentos y descifrado preliminar de otra especie. |
 | **Uso de IA** | [Bitácora de IA](bitacora_IA_L1.md) | Intervenciones relevantes del asistente, decisiones propias y mecanismos de comprobación. |
 
-> [!NOTE]
-> En `sesion_2/` se conservan tanto [`momento_2.md`](sesion_2/momento_2.md), con una versión inicial de la documentación, como [`momento_2_act.md`](sesion_2/momento_2_act.md), que incorpora el análisis del canal y la transmisión. **Para seguir el trabajo más completo, consultar `momento_2_act.md`.**
 
 ## Estructura del repositorio
 

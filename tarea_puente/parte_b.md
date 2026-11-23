@@ -257,31 +257,10 @@ Por tanto, la función devuelve `[1]` sin realizar nuevas llamadas recursivas.
 
 Los guiones de la última fila indican que ya no es necesario ejecutar las operaciones de división y módulo.
 
-#### B.6.2. Construcción de la pila recursiva
-
-Durante la ejecución, cada llamada queda esperando el resultado de la siguiente para concatenar su residuo.
-
-```
-a_base_rec(1974, 6)
-    Espera concatenar [0]
-    |
-    +-- a_base_rec(329, 6)
-            Espera concatenar [5]
-            |
-            +-- a_base_rec(54, 6)
-                    Espera concatenar [0]
-                    |
-                    +-- a_base_rec(9, 6)
-                            Espera concatenar [3]
-                            |
-                            +-- a_base_rec(1, 6)
-                                    Caso base
-                                    Devuelve [1]
-```
 
 La última llamada devuelve `[1]`, lo que permite comenzar el retorno de las llamadas pendientes.
 
-#### B.6.3. Retorno de las llamadas
+#### B.6.2. Retorno de las llamadas
 
 Durante el retorno se realizan las concatenaciones en el orden establecido por la función.
 

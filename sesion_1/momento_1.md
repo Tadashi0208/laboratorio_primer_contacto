@@ -48,8 +48,8 @@ La longitud no determina las dimensiones: por ejemplo, 15 bits pueden distribuir
 
 Para encontrar las dimensiones posibles busqué los divisores de 1679. Al probar divisibilidad entre números primos, encontré:
 
-$$  
-1679=23\cdot73,\qquad D(1679)=\{1,23,73,1679\}.  
+$$
+1679=23\cdot73,\qquad D(1679)=\lbrace 1,23,73,1679\rbrace.
 $$
 
 Como 23 y 73 son primos, las parejas de dimensiones son:
